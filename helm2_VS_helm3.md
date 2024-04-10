@@ -84,10 +84,14 @@ Whenever you do helm install, helm upgrade, helm lint, helm template the values 
 
 
 #### CLI command renames
-helm delete  -> helm uninstall
-helm inspect -> helm show
-helm fetch -> helm pull
+
+- helm delete  -> helm uninstall
+- helm inspect -> helm show
+- helm fetch -> helm pull
 
 
 #### Automatically creating namespaces
+If namespace is not there in helm 3 it will through an error
+
+
 
