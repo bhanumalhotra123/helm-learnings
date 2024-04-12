@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: react-ui-dep
+  labels:
+  {{- include "ui.labels" . | nindent 4 -}}     # here . is very imp as it sets the scope for the values that has to be brought in
+
+spec:
+  replicas: {{ .Values.app.replicas }}
+  selector:
+    matchLabels:
+      app: react-ui
+  template:
+    metadata:
+      labels:
+      {{- include "ui.labels" . | nindent 4 -}}
+
+    spec:
+      containers:
+        - name: react-ui
+          image: {{ .Values.app.container.image }}
+          imagePullPolicy: IfNotPresent
+          resources:
+           {{- toYaml .Values.app.computerc | nintend 12}}
+
